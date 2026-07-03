@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ContactMessageSchema = new mongoose.Schema(
+const ContactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -28,9 +28,19 @@ const ContactMessageSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    status: {
+      type: String,
+      required: true,
+      enum: ["new", "read"],
+      default: "new",
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: {
+      createdAt: true,
+      updatedAt: false,
+    },
+  }
 );
 
-export default mongoose.models.ContactMessage ||
-  mongoose.model("ContactMessage", ContactMessageSchema);
+export default mongoose.models.Contact || mongoose.model("Contact", ContactSchema);
