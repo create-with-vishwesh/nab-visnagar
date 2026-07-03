@@ -1,74 +1,80 @@
 export const contactData = {
   en: {
-    officeInformation: {
-      heading: "Office information",
-      intro: "Use these details to reach NAB Visnagar for general communication and support-related questions. Visitors are welcome during office hours, and appointments are recommended before visiting.",
-      addressLabel: "Address",
-      phoneLabel: "Phone",
-      emailLabel: "Email",
+    hero: {
+      eyebrow: "Contact NAB Visnagar",
+      title: "Reach out for information, support, or collaboration",
+      intro:
+        "NAB Visnagar welcomes beneficiary-related questions, family guidance, support interest, and institutional communication. Please contact the office before visiting so the team can receive you properly.",
     },
     officeHours: {
       heading: "Office hours",
-      text: "Visitors are welcome during office hours. Please call ahead and make an appointment before visiting so the team can receive you properly.\n\nMonday - 11 am–5 pm\nTuesday - 11 am–5 pm\nWednesday - 11 am–5 pm\nThursday - 11 am–5 pm\nFriday - 11 am–5 pm\nSaturday - 11 am–5 pm\nSunday - Closed",
+      intro: "Please call ahead and make an appointment before visiting.",
+      labels: {
+        mondayFriday: "Monday - Friday",
+        saturday: "Saturday",
+        sunday: "Sunday",
+        holidayMessage: "Holiday message",
+      },
     },
-    mapsPlaceholder: {
-      heading: "Google Maps placeholder",
-      text: "Google Maps location for National Association For The Blind, Visnagar.",
-      embedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.2946520891946!2d72.55702027529628!3d23.66541859203363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c4fa92d971eed%3A0xc94c9b467762bf3!2sNational%20Association%20For%20The%20Blind%2C%20Visnagar!5e0!3m2!1sen!2sin!4v1783061951272!5m2!1sen!2sin",
-      embedTitle: "National Association For The Blind, Visnagar on Google Maps",
-      imagePath: "/images/buildings/01_entrygate.jpg",
-      altText: "Entrance gate and campus view at NAB Visnagar",
+    contactCategories: {
+      heading: "Inquiry categories",
+      intro: "These categories help route your message to the right person.",
     },
     contactForm: {
       heading: "Contact form",
-      text: "Use this form to draft a message before you contact NAB directly. Validation happens in your browser only.",
-      fields: ["Name", "Phone or email", "Subject", "Message"],
+      text: "Use this form to send a message directly to NAB Visnagar.",
+      labels: {
+        name: "Name",
+        contact: "Phone or email",
+        category: "Inquiry category",
+        message: "Message",
+      },
       buttonLabel: "Send message",
     },
-    socialLinks: {
-      heading: "Social links placeholder",
-      text: "Official social profiles can be linked here when they are publicly verified.",
-      items: ["Facebook", "Instagram", "YouTube"],
-    },
-    emergencyContact: {
-      heading: "Emergency contact placeholder",
-      text: "No emergency helpline is published on this site yet. Please use the office contact details for non-emergency communication.",
+    cta: {
+      heading: "Prefer to explore first?",
+      text: "You can learn more about NAB Visnagar’s service areas before reaching out or supporting the organization.",
+      primaryLabel: "View Programs",
+      secondaryLabel: "Support NAB",
     },
   },
   gu: {
-    officeInformation: {
-      heading: "ઓફિસ માહિતી",
-      intro: "સામાન્ય સંવાદ અને સહાય સંબંધિત પ્રશ્નો માટે નીચેની વિગતોનો ઉપયોગ કરો. ઓફિસ સમય દરમિયાન મુલાકાતીઓનું સ્વાગત છે અને મુલાકાત પહેલાં સમય લેવાની ભલામણ કરવામાં આવે છે.",
-      addressLabel: "સરનામું",
-      phoneLabel: "ફોન",
-      emailLabel: "ઈમેલ",
+    hero: {
+      eyebrow: "NAB વિસનગરનો સંપર્ક",
+      title: "માહિતી, સહાય અથવા સહયોગ માટે અમારો સંપર્ક કરો",
+      intro:
+        "NAB વિસનગર લાભાર્થી સંબંધિત પ્રશ્નો, પરિવાર માર્ગદર્શન, સહાય સંબંધિત રસ અને સંસ્થાગત સંવાદ માટે લોકોનું સ્વાગત કરે છે. કૃપા કરીને મુલાકાત પહેલાં સમય નક્કી કરો જેથી ટીમ તમને યોગ્ય રીતે મળી શકે.",
     },
     officeHours: {
       heading: "ઓફિસ સમય",
-      text: "ઓફિસ સમય દરમિયાન મુલાકાતીઓનું સ્વાગત છે. કૃપા કરીને મુલાકાત પહેલાં ફોન કરીને સમય નક્કી કરો જેથી ટીમ તમને યોગ્ય રીતે મળી શકે.\n\nસોમવાર - 11 am–5 pm\nમંગળવાર - 11 am–5 pm\nબુધવાર - 11 am–5 pm\nગુરુવાર - 11 am–5 pm\nશુક્રવાર - 11 am–5 pm\nશનિવાર - 11 am–5 pm\nરવિવાર - બંધ",
+      intro: "કૃપા કરીને મુલાકાત પહેલાં ફોન કરીને સમય નક્કી કરો.",
+      labels: {
+        mondayFriday: "સોમવાર - શુક્રવાર",
+        saturday: "શનિવાર",
+        sunday: "રવિવાર",
+        holidayMessage: "રજાનો સંદેશ",
+      },
     },
-    mapsPlaceholder: {
-      heading: "Google Maps માટે સ્થાન",
-      text: "નેશનલ એસોસિયેશન ફોર ધ બ્લાઇન્ડ, વિસનગર માટેનું Google Maps સ્થાન.",
-      embedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.2946520891946!2d72.55702027529628!3d23.66541859203363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c4fa92d971eed%3A0xc94c9b467762bf3!2sNational%20Association%20For%20The%20Blind%2C%20Visnagar!5e0!3m2!1sen!2sin!4v1783061951272!5m2!1sen!2sin",
-      embedTitle: "નેશનલ એસોસિયેશન ફોર ધ બ્લાઇન્ડ, વિસનગર માટે Google Maps",
-      imagePath: "/images/buildings/01_entrygate.jpg",
-      altText: "NAB વિસનગરનું પ્રવેશદ્વાર અને કેમ્પસ દૃશ્ય",
+    contactCategories: {
+      heading: "પૂછપરછ શ્રેણીઓ",
+      intro: "આ શ્રેણીઓ તમારા સંદેશને યોગ્ય વ્યક્તિ સુધી પહોંચાડવામાં મદદ કરે છે.",
     },
     contactForm: {
       heading: "સંપર્ક ફોર્મ",
-      text: "NABનો સીધો સંપર્ક કરતા પહેલાં આ ફોર્મમાં સંદેશનો ડ્રાફ્ટ તૈયાર કરો. ચકાસણી માત્ર તમારા બ્રાઉઝરમાં થાય છે.",
-      fields: ["નામ", "ફોન અથવા ઈમેલ", "વિષય", "સંદેશ"],
+      text: "આ ફોર્મનો ઉપયોગ કરીને NAB વિસનગરને સીધો સંદેશ મોકલો.",
+      labels: {
+        name: "નામ",
+        contact: "ફોન અથવા ઈમેલ",
+        category: "પૂછપરછ શ્રેણી",
+        message: "સંદેશ",
+      },
       buttonLabel: "સંદેશ મોકલો",
     },
-    socialLinks: {
-      heading: "સોશિયલ લિંક્સ માટે સ્થાન",
-      text: "જ્યારે અધિકૃત પ્રોફાઇલ જાહેર રીતે ચકાસાય ત્યારે અહીં તેમને જોડાઈ શકે છે.",
-      items: ["Facebook", "Instagram", "YouTube"],
-    },
-    emergencyContact: {
-      heading: "તાત્કાલિક સંપર્ક માટે સ્થાન",
-      text: "અહીં હજી કોઈ ઇમર્જન્સી હેલ્પલાઇન પ્રકાશિત નથી. કૃપા કરીને સામાન્ય સંવાદ માટે ઓફિસ વિગતોનો ઉપયોગ કરો.",
+    cta: {
+      heading: "પહેલાં વધુ જાણવા માંગો છો?",
+      text: "સંપર્ક કરતા પહેલા અથવા સંસ્થાને સહાય કરતા પહેલા તમે NAB વિસનગરના સેવા ક્ષેત્રો વિશે વધુ જાણકારી મેળવી શકો છો.",
+      primaryLabel: "કાર્યક્રમો જુઓ",
+      secondaryLabel: "NABને સહાય કરો",
     },
   },
 };

@@ -34,17 +34,12 @@ const AdminSchema = new mongoose.Schema(
   }
 );
 
-AdminSchema.pre("save", async function adminPasswordHash(next) {
+AdminSchema.pre("save", async function adminPasswordHash() {
   if (!this.isModified("password")) {
-    return next();
+    return;
   }
 
-  try {
-    this.password = await hashPassword(this.password);
-    return next();
-  } catch (error) {
-    return next(error);
-  }
+  this.password = await hashPassword(this.password);
 });
 
 AdminSchema.methods.comparePassword = function compareAdminPassword(plainPassword) {

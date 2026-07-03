@@ -1,26 +1,5 @@
 import mongoose from "mongoose";
 
-const GalleryImageSchema = new mongoose.Schema(
-  {
-    url: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    publicId: {
-      type: String,
-      trim: true,
-      default: "",
-    },
-    alt: {
-      type: String,
-      trim: true,
-      default: "",
-    },
-  },
-  { _id: false }
-);
-
 const GalleryAlbumSchema = new mongoose.Schema(
   {
     title: {
@@ -49,7 +28,7 @@ const GalleryAlbumSchema = new mongoose.Schema(
       trim: true,
     },
     images: {
-      type: [GalleryImageSchema],
+      type: [String],
       default: [],
     },
     featured: {

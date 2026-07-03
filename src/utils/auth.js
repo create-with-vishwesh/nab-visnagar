@@ -43,3 +43,45 @@ export function verifyAdminToken(token) {
 
   return jwt.verify(token, getJwtSecret());
 }
+
+export function getBearerToken(authorizationHeader) {
+  if (typeof authorizationHeader !== "string" || !authorizationHeader.trim()) {
+    return null;
+  }
+
+  const [scheme, token] = authorizationHeader.trim().split(" ");
+
+  if (scheme !== "Bearer" || !token) {
+    return null;
+  }
+
+  return token;
+}
+
+export function getCookieToken(cookieHeader, cookieName) {
+  if (typeof cookieHeader !== "string" || !cookieHeader.trim()) {
+    return null;
+  }
+
+  const cookies = cookieHeader.split(";");
+
+  for (const cookie of cookies) {
+    const [name, ...valueParts] = cookie.trim().split("=");
+
+    if (name === cookieName && valueParts.length > 0) {
+      return valueParts.join("=").trim();
+    }
+  }
+
+  return null;
+}
+
+export function getAdminTokenFromRequest(request) {
+  const authorizationToken = getBearerToken(request.headers.get("authorization"));
+
+  if (authorizationToken) {
+    return authorizationToken;
+  }
+
+  return getCookieToken(request.headers.get("cookie"), "admin_token");
+}

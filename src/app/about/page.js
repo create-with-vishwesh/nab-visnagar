@@ -55,16 +55,22 @@ const pageContent = {
             "He established NAB Visnagar with a clear vision of education, rehabilitation, self-reliance, and dignity for visually impaired people.",
         },
         {
-          name: "Smt. Hasumatiben Halari",
-          role: "Supporting Pillar of NAB Visnagar",
+          name: "Mrs. Hasumatiben Halari",
+          role: "Hon. Secretary",
           image: {
-            src: "/images/people/haumati_halari.jpg",
-            alt: "Smt. Hasumatiben Halari",
+            src: "/images/people/hasumati_halari.jpg",
+            alt: "Mrs. Hasumatiben Halari",
           },
           description:
             "She provided steady support to the institution and helped strengthen its service to beneficiaries over the years.",
         },
       ],
+    },
+    president: {
+      heading: "President",
+      name: "Dr. Mihirbhai Joshi",
+      intro:
+        "Dr. Mihirbhai Joshi currently serves as the President of NAB Visnagar. He supports the organization's mission of education, rehabilitation, and empowerment of visually impaired individuals through focused institutional leadership.",
     },
     whatWeDo: {
       eyebrow: "What We Do & Why NAB Visnagar",
@@ -174,16 +180,22 @@ const pageContent = {
             "તેમણે દૃષ્ટિબાધિત વ્યક્તિઓ માટે શિક્ષણ, પુનર્વસન, આત્મનિર્ભરતા અને ગૌરવ પર આધારિત NAB વિસનગરની સ્થાપના કરી.",
         },
         {
-          name: "Smt. Hasumatiben Halari",
-          role: "NAB વિસનગરની સહાયક આધારશિલા",
+          name: "Mrs. Hasumatiben Halari",
+          role: "માન. સચિવ",
           image: {
-            src: "/images/people/haumati_halari.jpg",
-            alt: "Smt. Hasumatiben Halari",
+            src: "/images/people/hasumati_halari.jpg",
+            alt: "Mrs. Hasumatiben Halari",
           },
           description:
             "તેમણે સંસ્થાને સતત સહારો આપ્યો અને લાભાર્થીઓ માટે તેના કાર્યને મજબૂત બનાવવામાં મદદ કરી.",
         },
       ],
+    },
+    president: {
+      heading: "પ્રમુખ",
+      name: "Dr. Mihirbhai Joshi",
+      intro:
+        "ડૉ. મિહિરભાઈ જોષી હાલમાં NAB વિસનગરના પ્રમુખ તરીકે સેવા આપે છે. તેઓ દ્રષ્ટિબાધિત વ્યક્તિઓના શિક્ષણ, પુનર્વસન અને સશક્તિકરણના સંસ્થાના ધ્યેયને સક્રિય રીતે સમર્થન આપે છે.",
     },
     whatWeDo: {
       eyebrow: "અમે શું કરીએ છીએ અને NAB વિસનગર કેમ",
@@ -507,6 +519,12 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
+
+          <article className="mx-auto mt-8 max-w-3xl rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-7">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{content.president.heading}</p>
+            <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900">{content.president.name}</h3>
+            <p className="mt-4 text-base leading-7 text-slate-600">{content.president.intro}</p>
+          </article>
         </div>
       </section>
 

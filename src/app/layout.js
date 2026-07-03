@@ -5,6 +5,7 @@ import AccessibilityControls from "@/components/accessibility/AccessibilityContr
 import WebsiteTourExperience from "@/components/accessibility/WebsiteTourExperience";
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { WebsiteSettingsProvider } from "@/context/WebsiteSettingsContext";
 
 export const metadata = {
   title: "NAB Visnagar",
@@ -22,17 +23,19 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         <AccessibilityProvider>
           <LanguageProvider>
-            <a
-              href="#main-content"
-              className="fixed left-4 top-4 z-[70] -translate-y-16 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/10 transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
-            >
-              Skip to Main Content
-            </a>
-            <Navbar />
-            <main id="main-content">{children}</main>
-            <Footer />
-            <WebsiteTourExperience />
-            <AccessibilityControls />
+            <WebsiteSettingsProvider>
+              <a
+                href="#main-content"
+                className="fixed left-4 top-4 z-[70] -translate-y-16 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/10 transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+              >
+                Skip to Main Content
+              </a>
+              <Navbar />
+              <main id="main-content">{children}</main>
+              <Footer />
+              <WebsiteTourExperience />
+              <AccessibilityControls />
+            </WebsiteSettingsProvider>
           </LanguageProvider>
         </AccessibilityProvider>
       </body>

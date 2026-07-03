@@ -18,6 +18,23 @@ const ContactSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
+    category: {
+      type: String,
+      required: true,
+      trim: true,
+      enum: [
+        "General Inquiry",
+        "Admission / Student Inquiry",
+        "Residential Hostel Inquiry",
+        "Rehabilitation & Training Inquiry",
+        "Volunteer Inquiry",
+        "Donation / Funding Support",
+        "CSR / Organization Partnership",
+        "Scholarship Inquiry",
+        "Media & Press Inquiry",
+        "Other",
+      ],
+    },
     subject: {
       type: String,
       trim: true,

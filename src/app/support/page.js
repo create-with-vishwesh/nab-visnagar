@@ -1,14 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { siteMeta } from "@/data/siteMeta";
 import { supportPageContent } from "@/data/supportPageContent";
+import { QRCodeSVG } from "qrcode.react";
+import { buildUpiPaymentUrl } from "@/utils/website-settings";
+import { useWebsiteSettings } from "@/context/WebsiteSettingsContext";
 
 export default function SupportPage() {
   const { language } = useLanguage();
-  const meta = siteMeta[language];
   const content = supportPageContent[language];
+  const { settings } = useWebsiteSettings();
+  const donationPanel = settings.donationPanel;
+  const upiPaymentUrl = buildUpiPaymentUrl(settings);
+  const showDonationPanel =
+    donationPanel.enabled &&
+    (donationPanel.accountHolderName || donationPanel.bankName || donationPanel.accountNumber || donationPanel.ifscCode || donationPanel.upiId);
 
   return (
     <>
@@ -30,13 +36,13 @@ export default function SupportPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              {content.whyDonate.heading}
+              {content.whySupport.heading}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">{content.whyDonate.intro}</p>
+            <p className="mt-6 text-lg leading-8 text-slate-600">{content.whySupport.intro}</p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {content.whyDonate.points.map((point) => (
+            {content.whySupport.points.map((point) => (
               <article
                 key={point.title}
                 className="rounded-lg border border-slate-200 bg-slate-50 p-6 shadow-sm"
@@ -53,13 +59,13 @@ export default function SupportPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              {content.howDonationsHelp.heading}
+              {content.waysToSupport.heading}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">{content.howDonationsHelp.intro}</p>
+            <p className="mt-6 text-lg leading-8 text-slate-600">{content.waysToSupport.intro}</p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {content.howDonationsHelp.items.map((item) => (
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {content.waysToSupport.items.map((item) => (
               <article
                 key={item.title}
                 className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
@@ -72,113 +78,85 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              {content.supportImpact.heading}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">{content.supportImpact.intro}</p>
-          </div>
+      {showDonationPanel ? (
+        <section className="bg-white py-16 sm:py-24 lg:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <article className="rounded-lg border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                Donation Panel
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-slate-600">
+                Use the verified bank details below for contributions.
+              </p>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {content.supportImpact.items.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-lg border border-slate-200 bg-slate-50 p-6 shadow-sm"
-              >
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
-              </article>
-            ))}
+              <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+                <dl className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Account Holder Name
+                    </dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate-700">{donationPanel.accountHolderName}</dd>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Bank Name
+                    </dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate-700">{donationPanel.bankName}</dd>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Branch Name
+                    </dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate-700">{donationPanel.branchName}</dd>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Account Number
+                    </dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate-700">{donationPanel.accountNumber}</dd>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      IFSC Code
+                    </dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate-700">{donationPanel.ifscCode}</dd>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">UPI ID</dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate-700">{donationPanel.upiId}</dd>
+                  </div>
+                </dl>
+
+                <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    Auto-generated QR Code
+                  </p>
+                  <div className="mt-6 flex justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    {upiPaymentUrl ? (
+                      <QRCodeSVG value={upiPaymentUrl} size={220} includeMargin level="M" />
+                    ) : null}
+                  </div>
+                  {donationPanel.donationNote ? (
+                    <p className="mt-4 text-sm leading-6 text-slate-600">{donationPanel.donationNote}</p>
+                  ) : null}
+                </div>
+              </div>
+            </article>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="bg-slate-50 py-16 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{content.volunteer.heading}</h2>
-              <p className="mt-4 text-lg leading-8 text-slate-600">{content.volunteer.text}</p>
-            </article>
-            <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{content.csr.heading}</h2>
-              <p className="mt-4 text-lg leading-8 text-slate-600">{content.csr.text}</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{content.faq.heading}</h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {content.faq.items.map((item) => (
-              <article key={item.q} className="rounded-lg border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-slate-900">{item.q}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{item.a}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-slate-200 bg-slate-50 py-16 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <article className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{content.futurePaymentGateway.heading}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{content.futurePaymentGateway.text}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              {content.thankYou.heading}
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{content.thankYou.text}</p>
           </article>
         </div>
       </section>
 
-      <section className="bg-slate-50 py-16 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              {content.responsibleNote.heading}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">{content.responsibleNote.text}</p>
-            <ul className="mt-6 space-y-3 text-sm leading-7 text-slate-600">
-              {content.responsibleNote.points.map((point) => (
-                <li key={point} className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-slate-400" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-sm text-slate-500">
-              {meta.shortName}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-900 py-16 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            {content.cta.heading}
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-slate-300">{content.cta.text}</p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-100"
-            >
-              {content.cta.primaryLabel}
-            </Link>
-            <Link
-              href="/programs"
-              className="inline-flex items-center justify-center rounded-lg border border-slate-500 px-8 py-3 font-medium text-white transition-colors hover:bg-slate-800"
-            >
-              {content.cta.secondaryLabel}
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
