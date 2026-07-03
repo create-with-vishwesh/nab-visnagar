@@ -7,6 +7,7 @@ const navigationItems = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/contact-messages", label: "Contact Messages" },
   { href: "/admin/website-settings", label: "Website Settings" },
+  { href: "/admin/account", label: "Account Settings" },
 ];
 
 export default function AdminShell({ children }) {
