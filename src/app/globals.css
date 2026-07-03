@@ -19,6 +19,68 @@
   }
 }
 
+html[data-accessibility-dark="true"] {
+  color-scheme: dark;
+}
+
+html[data-accessibility-contrast="true"] {
+  color-scheme: dark;
+}
+
+html[data-accessibility-dark="true"] body {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+html[data-accessibility-contrast="true"] body {
+  background: #000000;
+  color: #ffffff;
+}
+
+html[data-accessibility-dark="true"] :is(.bg-white, .bg-slate-50, .bg-slate-100) {
+  background-color: #111827 !important;
+  background-image: none !important;
+}
+
+html[data-accessibility-dark="true"] [class*="bg-white/"] {
+  background-color: #111827 !important;
+  background-image: none !important;
+}
+
+html[data-accessibility-dark="true"] [class*="bg-gradient"] {
+  background-image: none !important;
+}
+
+html[data-accessibility-dark="true"] :is(.border-slate-200, .border-slate-300) {
+  border-color: #334155 !important;
+}
+
+html[data-accessibility-dark="true"] :is(.text-slate-900, .text-slate-800, .text-slate-700, .text-slate-600, .text-slate-500, .text-slate-400, .text-slate-300, .text-slate-200) {
+  color: #f8fafc !important;
+}
+
+html[data-accessibility-contrast="true"] :is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-slate-200, .bg-slate-900) {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+html[data-accessibility-contrast="true"] [class*="bg-white/"] {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+html[data-accessibility-contrast="true"] [class*="bg-gradient"] {
+  background-image: none !important;
+}
+
+html[data-accessibility-contrast="true"] :is(.border-slate-200, .border-slate-300) {
+  border-color: #ffffff !important;
+}
+
+html[data-accessibility-contrast="true"] :is(.text-slate-900, .text-slate-800, .text-slate-700, .text-slate-600, .text-slate-500, .text-slate-400, .text-slate-300, .text-slate-200, .text-white) {
+  color: #ffffff !important;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
