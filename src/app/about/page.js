@@ -183,7 +183,7 @@ const pageContent = {
           name: "Mrs. Hasumatiben Halari",
           role: "માન. સચિવ",
           image: {
-            src: "/images/people/hasumati_halari.jpg",
+            src: "/images/people/haumati_halari.jpg",
             alt: "Mrs. Hasumatiben Halari",
           },
           description:
